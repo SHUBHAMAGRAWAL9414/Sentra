@@ -35,7 +35,7 @@ export const signUp=async (req, res) => {
             httpOnly: true,
             maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
             sameSite: "strict",
-            secure:false
+            secure:true
         });
         return res.status(201).json(user);
         
@@ -68,7 +68,7 @@ export const Login=async (req, res) => {
             httpOnly: true,
             maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
             sameSite: "strict",
-            secure:false
+            secure:true
         });
         
         return res.status(200).json(user);
