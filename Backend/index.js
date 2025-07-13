@@ -11,7 +11,7 @@ const app=express()
 
 
 app.use(cors({
-    origin: "http://localhost:5173", // Replace with your frontend URL
+    origin: ["http://localhost:5173", "https://anshu-08jn.onrender.com"], // Replace with your frontend URL
     credentials: true
 }))
 
