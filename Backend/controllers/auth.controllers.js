@@ -31,12 +31,13 @@ export const signUp=async (req, res) => {
         });
 
         const token=await genToken(user._id);
-        res.cookie("token", token, {
-            httpOnly: true,
-            maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
-            sameSite: "none",
-            secure:true
-        });
+        const isProduction = process.env.NODE_ENV === "production";
+res.cookie("token", token, {
+    httpOnly: true,
+    maxAge: 30 * 24 * 60 * 60 * 1000,
+    sameSite: isProduction ? "none" : "lax",
+    secure: isProduction
+});
         return res.status(201).json(user);
         
     } catch (error) {
